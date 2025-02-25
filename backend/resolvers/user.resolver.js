@@ -94,9 +94,9 @@ const userResolver = {
                 throw new Error(error.message || "INternal server error in authuser")
         }
        },
-        user:(_,{userId})=>{
+        user:async (_,{userId})=>{
             try {
-                return users.find((user)=>user._id===userId)
+                return await User.findById(userId);
                 
             } catch (error) {
                 console.log("===user error resolver user.resolver")
